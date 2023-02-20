@@ -18,7 +18,7 @@ export function Header() {
           <h2>Dashboard</h2>
         </NavLink>
         <hr />
-        <NavLink to="/products" title="Produtos" end>
+        <NavLink to="/products" title="Produtos">
           <h2>Produtos</h2>
           <Table size={32} weight="duotone" />
         </NavLink>

@@ -27,7 +27,7 @@ export function Products() {
     <ProductsContainer>
       <div>
         <h1>Produtos</h1>
-        <NavLink to="products/create" title="Novo produto" end>
+        <NavLink to="/products/create" title="Novo produto" end>
           <Plus size={24} color={theme.colors.gray_dark} weight="bold" />
         </NavLink>
       </div>
