@@ -9,17 +9,20 @@ export function Header() {
     <HeaderContainer>
       <WrapperLogo>
         <img src={logoStock} alt="" />
-        <h1>Controle de Estoque</h1>
+        <h1>e-<strong>Stock</strong></h1>
       </WrapperLogo>
 
       <nav>
         <NavLink to="/" title="Dashboard" end>
-          <Gauge size={40} weight="thin" />
+          <Gauge size={32} weight="duotone" />
+          <h2>Dashboard</h2>
         </NavLink>
+        <hr />
         <NavLink to="/products" title="Produtos" end>
-          <Table size={40} weight="thin" />
+          <h2>Produtos</h2>
+          <Table size={32} weight="duotone" />
         </NavLink>
-      </nav>
-    </HeaderContainer>
+    </nav>
+    </HeaderContainer >
   )
 }
