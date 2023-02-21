@@ -20,7 +20,8 @@ export type NewProductFormData = zod.infer<typeof newProductFormValidationSchema
 
 export function UpdateProduct() {
   const navigate = useNavigate()
-  const { createNewProduct } = useContext(ProductsContext)
+  const { updateProduct } = useContext(ProductsContext)
+  const { id } = useParams()
 
   const newProductForm = useForm<NewProductFormData>({
     resolver: zodResolver(newProductFormValidationSchema),
@@ -33,7 +34,7 @@ export function UpdateProduct() {
   })
 
   function handleCreateNewProduct(data: NewProductFormData) {
-    createNewProduct(data)
+    updateProduct(id!, data)
     reset()
 
     navigate('/products')

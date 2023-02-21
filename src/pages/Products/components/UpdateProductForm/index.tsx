@@ -14,7 +14,7 @@ import {
 } from "./styles";
 
 export function UpdateProductForm() {
-  const { register, formState: { errors } } = useFormContext<NewProductFormData>()
+  const { register, setValue, formState: { errors } } = useFormContext<NewProductFormData>()
   const router = useParams()
   const navigate = useNavigate()
   const { id } = router
@@ -25,9 +25,6 @@ export function UpdateProductForm() {
   }
 
   let product = products.find(product => product.id === id)
-
-  console.log(product)
-
   return (
     <FormContainer>
       <div>
@@ -37,7 +34,8 @@ export function UpdateProductForm() {
             id="name"
             {...register("name")}
             type="text"
-            value={product?.name}
+            // value={product?.name}
+            onChange={(e: any) => setValue("name", e.target.value)}
             placeholder="Nome"
           />
           {errors.name && <OverlayTooltip message={errors.name.message} />}
@@ -50,7 +48,8 @@ export function UpdateProductForm() {
             id="price"
             {...register("price")}
             type="text"
-            value={product?.price}
+            // value={product?.price}
+            onChange={(e: any) => setValue("price", e.target.value)}
             placeholder="Preço"
           />
           {errors.price && <OverlayTooltip message={errors.price.message} />}
@@ -62,8 +61,9 @@ export function UpdateProductForm() {
           <Input
             id="category"
             {...register("category")}
-            value={product?.category}
+            // value={product?.category}
             type="text"
+            onChange={(e: any) => setValue("category", e.target.value)}
             placeholder="Categoria"
           />
           {errors.category && <OverlayTooltip message={errors.category.message} />}
@@ -76,7 +76,8 @@ export function UpdateProductForm() {
             id="description"
             {...register("description")}
             type="text"
-            value={product?.description}
+            // value={product?.description}
+            onChange={(e: any) => setValue("description", e.target.value)}
             placeholder="Descrição"
           />
           {errors.description && <OverlayTooltip message={errors.description.message} />}

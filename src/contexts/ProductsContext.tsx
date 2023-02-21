@@ -19,6 +19,7 @@ interface CreateProduct extends Omit<Product, 'id'> {}
 interface ProductsContextType {
   products: Product[]
   createNewProduct:(data: CreateProduct) => void
+  updateProduct:(id: string, data: CreateProduct) => void
   deleteProduct:(productId: string) => void
 }
 
@@ -27,7 +28,6 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
   const [products, setProducts] = useState<Product[]>([])
 
   function createNewProduct(data: CreateProduct) {
-    console.log(data)
     const id = String(new Date().getTime())
 
     const newProduct: any = {
@@ -46,12 +46,31 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
     setProducts(productsWithoutThisProductId)
   }
 
+  function updateProduct(idProduct: string, data: CreateProduct) {
+    setProducts(state => {
+      const updatedProducts = state.map(product => {
+        if (product.id === idProduct) {
+          return {
+            ...product,
+            name: data.name,
+            price: data.price,
+            category: data.category,
+            description: data.description
+          };
+        }
+        return product;
+      });
+      return updatedProducts;
+    });
+  }
+
   return (
     <ProductsContext.Provider
       value={{
         products,
         createNewProduct,
-        deleteProduct
+        deleteProduct,
+        updateProduct
       }}
     >
       {children}
