@@ -3,7 +3,10 @@ import styled from "styled-components";
 export const CardDashboardContainer = styled.div`
   position: relative;
   width: 270px;
-  height: 276px;
+  height: 246px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 10px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, rgba(67, 77, 85, 0) 100%);
 `
@@ -11,16 +14,16 @@ export const CardDashboardContainer = styled.div`
 export const CardDashboardContent = styled.div`
   width: 230px;
   height: 196px;
-
+  margin-top: 24px;
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
-
+  
   h1 {
-    position: absolute;
     font-size: 52px;
     text-align: center;
-    top: 50%;
-    left: 45%;
+    margin: auto;
     font-weight: bold;
     color: ${({ theme }) => theme.colors.gray_dark}
   }
@@ -28,10 +31,8 @@ export const CardDashboardContent = styled.div`
   p {
     width: 192px;
     height: 55px;
-    position: absolute;
+    margin-left: auto;
     font-size: 16px;
-    top: 70%;
-    left: 20%;
     color: ${({ theme }) => theme.colors.gray}
   }
 `

@@ -16,8 +16,8 @@ export function Home() {
       </div>
       <div>
         <CardDashboard value={String(totalProducts)} description="Produtos cadastrados" />
-        <CardDashboard value="20" description="Produto com maior quantidade" />
-        <CardDashboard value="20" description="Produto com menor quantidade" />
+        <CardDashboard value="Lápis" description="Produto com maior quantidade" />
+        <CardDashboard value="Bicicleta" description="Produto com menor quantidade" />
       </div>
     </HomeContainer>
   )
