@@ -19,6 +19,7 @@ interface CreateProduct extends Omit<Product, 'id'> {}
 interface ProductsContextType {
   products: Product[]
   createNewProduct:(data: CreateProduct) => void
+  deleteProduct:(productId: string) => void
 }
 
 
@@ -40,11 +41,17 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
     setProducts(state => [...state, newProduct])
   }
 
+  function deleteProduct(productId: string) {
+    const productsWithoutThisProductId = products.filter(product => product.id !== productId)
+    setProducts(productsWithoutThisProductId)
+  }
+
   return (
     <ProductsContext.Provider
       value={{
         products,
-        createNewProduct
+        createNewProduct,
+        deleteProduct
       }}
     >
       {children}
