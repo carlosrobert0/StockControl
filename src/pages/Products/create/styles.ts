@@ -9,11 +9,6 @@ export const CreateProductContainer = styled.main`
 
   h1 {
     font-size: 1.5rem;
-    color: ${({ theme }) => theme.colors.info};
-    opacity: 0.8;
+    color: ${({ theme }) => theme.colors.primary};
   }
-`
-
-export const ProductsList = styled.div`
-  
 `

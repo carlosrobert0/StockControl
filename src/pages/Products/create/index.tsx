@@ -4,53 +4,35 @@ import * as zod from 'zod'
 
 import { NewProductForm } from "../components/NewProductForm";
 import { CreateProductContainer } from "./styles";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ProductsContext } from "../../../contexts/ProductsContext";
 
 const newProductFormValidationSchema = zod.object({
-  name: zod.string(),
-  price: zod.number(),
-  category: zod.string(),
-  description: zod.string(),
+  name: zod.string().min(1, 'Este campo é obrigatório.'),
+  price: zod.string().min(1, 'Este campo é obrigatório.'),
+  category: zod.string().min(1, 'Este campo é obrigatório.'),
+  description: zod.string().min(1, 'Este campo é obrigatório.'),
 })
 
-type NewProductFormData = zod.infer<typeof newProductFormValidationSchema>
-
-interface Product {
-  id: string
-  name: string
-  price: number
-  category: string
-  description: string
-}
+export type NewProductFormData = zod.infer<typeof newProductFormValidationSchema>
 
 export function CreateProduct() {
-  const [products, setProducts] = useState<Product[]>([])
   const navigate = useNavigate()
+  const { createNewProduct } = useContext(ProductsContext)
   
   const newProductForm = useForm<NewProductFormData>({
     resolver: zodResolver(newProductFormValidationSchema),
     defaultValues: {
       name: '',
-      price: 0,
+      price: '',
       category: '',
       description: ''
     }
   })
 
   function handleCreateNewProduct(data: NewProductFormData) {
-    const id = String(new Date().getTime())
-
-    const newProduct: Product = {
-      id,
-      name: data.name,
-      price: data.price,
-      category: data.category,
-      description: data.description
-    }
-
-    setProducts(state => [...products, newProduct])
-    
+    createNewProduct(data)
     reset()
 
     navigate('/products')

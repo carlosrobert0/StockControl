@@ -1,4 +1,3 @@
-import { Minus, Plus } from 'phosphor-react'
 import styled from 'styled-components'
 
 export const FormContainer = styled.div`
@@ -26,6 +25,17 @@ export const FormContainer = styled.div`
 
     label {
       width: 25%;
+    }
+
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      div {
+        width: auto;
+        margin-left: 4px;
+      }
     }
   }
 `

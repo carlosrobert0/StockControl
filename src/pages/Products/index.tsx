@@ -1,27 +1,13 @@
 import { Pencil, Plus, Trash } from "phosphor-react";
+import { useContext, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useTheme } from "styled-components";
+import { ProductsContext } from "../../contexts/ProductsContext";
 import { ProductsContainer, ProductsList } from "./styles";
-
-const products = [
-  {
-    id: 1,
-    name: "Bicicleta",
-    price: "200,00",
-    category: "ciclismo",
-    description: "bicicleta perfeita para montain bike"
-  },
-  {
-    id: 2,
-    name: "Carro",
-    price: "200,00",
-    category: "automovel",
-    description: "carro perfeito para hally"
-  }
-]
 
 export function Products() {
   const theme = useTheme()
+  const { products } = useContext(ProductsContext)
 
   return (
     <ProductsContainer>
@@ -45,7 +31,7 @@ export function Products() {
             </tr>
           </thead>
           <tbody>
-            {products.map(product => (
+            {products?.map(product => (
               <tr key={product.id}>
                 <td>{product.name}</td>
                 <td>{product.price}</td>

@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 
 export const HeaderContainer = styled.header`
+  padding-left: 3.5rem;
+  padding-right: 3.5rem;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -26,25 +29,21 @@ export const HeaderContainer = styled.header`
 
       gap: 0.5rem;
 
-      color: ${({ theme }) => theme.colors.white};
+      color: ${({ theme }) => theme.colors.gray};
 
       border-top: 3px solid transparent;
       border-bottom: 3px solid transparent;
-
-      opacity: 0.4;
 
       transition: all 0.2s;
 
       text-decoration: none;
 
       &:hover {
-        border-bottom: 3px solid ${({ theme }) => theme.colors.info};
-        opacity: 0.8;
+        border-bottom: 3px solid ${({ theme }) => theme.colors.primary};
       }
 
       &.active {
-        color: ${({ theme }) => theme.colors.info};
-        opacity: 0.8;
+        color: ${({ theme }) => theme.colors.primary};
       }
     }
   }

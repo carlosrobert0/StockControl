@@ -14,6 +14,7 @@ export const defaultTheme = {
     "gray": "#6c757d",
     "gray_dark": "#343a40",
     "primary": "#007bff",
+    "primary_light": "rgba(0, 123, 255, 0.3)",
     "secondary": "#6c757d",
     "success": "#28a745",
     "info": "#48C1F0",

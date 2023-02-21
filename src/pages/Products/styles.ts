@@ -9,12 +9,12 @@ export const ProductsContainer = styled.main`
 
   div {
     display: flex;
+    align-items: flex-start;
     justify-content: space-between;
 
     h1 {
       font-size: 1.5rem;
-      color: ${({ theme }) => theme.colors.info};
-      opacity: 0.8;
+      color: ${({ theme }) => theme.colors.primary};
     }
   }
 `
@@ -51,11 +51,12 @@ export const ProductsList = styled.div`
 
     td {
       background-color: ${({ theme }) => theme.colors.gray_dark};
-      border-top: 4px solid ${({ theme }) => theme.colors.gray_dark};
       color: ${({ theme }) => theme.colors.white};
       padding: 1rem;
       font-size: 0.875rem;
       line-height: 1.6;
+    
+      text-align: start;
 
       &:first-child {
         width: 20%;
