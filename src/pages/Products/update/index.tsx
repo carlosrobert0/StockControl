@@ -8,6 +8,8 @@ import { useContext, useState } from "react";
 import { useNavigate, useParams, useRoutes } from "react-router-dom";
 import { ProductsContext } from "../../../contexts/ProductsContext";
 import { UpdateProductForm } from "../components/UpdateProductForm";
+import { useDispatch } from "react-redux";
+import { updateProduct } from "../../../redux/productSlice";
 
 const newProductFormValidationSchema = zod.object({
   name: zod.string().min(1, 'Este campo é obrigatório.'),
@@ -20,8 +22,8 @@ export type NewProductFormData = zod.infer<typeof newProductFormValidationSchema
 
 export function UpdateProduct() {
   const navigate = useNavigate()
-  const { updateProduct } = useContext(ProductsContext)
   const { id } = useParams()
+  const dispatch = useDispatch()
 
   const newProductForm = useForm<NewProductFormData>({
     resolver: zodResolver(newProductFormValidationSchema),
@@ -33,8 +35,8 @@ export function UpdateProduct() {
     }
   })
 
-  function handleCreateNewProduct(data: NewProductFormData) {
-    updateProduct(id!, data)
+  function handleUpdateProduct(data: NewProductFormData) {
+    dispatch(updateProduct(data))
     reset()
 
     navigate('/products')
@@ -46,7 +48,7 @@ export function UpdateProduct() {
     <UpdateProductContainer>
       <h1>Editar produto</h1>
 
-      <form onSubmit={handleSubmit(handleCreateNewProduct)}>
+      <form onSubmit={handleSubmit(handleUpdateProduct)}>
         <FormProvider {...newProductForm}>
           <UpdateProductForm />
         </FormProvider>

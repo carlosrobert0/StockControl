@@ -25,7 +25,7 @@ export const CardDashboardContent = styled.div`
     text-align: center;
     margin: auto;
     font-weight: bold;
-    color: ${({ theme }) => theme.colors.gray_dark}
+    color: ${({ theme }) => theme.colors.gray};
   }
 
   p {
@@ -33,7 +33,7 @@ export const CardDashboardContent = styled.div`
     height: 55px;
     margin-left: auto;
     font-size: 16px;
-    color: ${({ theme }) => theme.colors.gray}
+    color: ${({ theme }) => theme.colors.gray};
   }
 `
 

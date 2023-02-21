@@ -1,7 +1,9 @@
 import { useContext, useEffect } from "react";
 import { useFormContext } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
 import { Router, useNavigate, useParams } from "react-router-dom";
 import { ProductsContext } from "../../../../contexts/ProductsContext";
+import { selectProduct, updateProduct } from "../../../../redux/productSlice";
 import { NewProductFormData } from "../../create";
 import { OverlayTooltip } from "../OverlayTooltip";
 
@@ -19,7 +21,7 @@ export function UpdateProductForm() {
   const navigate = useNavigate()
   const { id } = router
   const { products } = useContext(ProductsContext) 
-
+  
   function navigateToBack() {
     navigate("/products")
   }

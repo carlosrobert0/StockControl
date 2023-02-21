@@ -50,7 +50,7 @@ export const ProductsList = styled.div`
     }
 
     td {
-      background-color: ${({ theme }) => theme.colors.gray_dark};
+      background-color: ${({ theme }) => theme.colors.gray};
       color: ${({ theme }) => theme.colors.white};
       padding: 1rem;
       font-size: 0.875rem;
