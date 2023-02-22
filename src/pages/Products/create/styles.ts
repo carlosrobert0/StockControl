@@ -11,4 +11,9 @@ export const CreateProductContainer = styled.main`
     font-size: 1.5rem;
     color: ${({ theme }) => theme.colors.primary};
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    flex: 1;
+    padding: 1.5rem;
+  }
 `

@@ -10,8 +10,8 @@ import { UpdateProductContainer } from "./styles";
 
 const updateProductSchema = zod.object({
   name: zod.string().optional(),
-  price: zod.number().min(0, 'Este campo é obrigatório.'),
-  quantity: zod.number().min(0, 'Este campo é obrigatório.'),
+  price: zod.number().min(1, 'O preço deve ser maior que 0.'),
+  quantity: zod.number().min(1, 'A quantidade deve ser maior que 0.'),
   category: zod.string().optional(),
   description: zod.string().optional(),
 })

@@ -38,6 +38,11 @@ export const FormContainer = styled.div`
       }
     }
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    width: 80%;
+    padding: 0.5rem;
+  }
 `
 
 export const Input = styled.input`

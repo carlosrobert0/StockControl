@@ -44,6 +44,30 @@ export const FormContainer = styled.div`
       }
     }
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    margin-top: 32px;
+    width: 80%;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 8px;
+
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    color: ${({ theme }) => theme.colors.gray_dark};
+    background-color: ${({ theme }) => theme.colors.white};
+    font-size: 1.125rem;
+    font-weight: regular;
+
+    p {
+      font-size: 12px;
+      text-align: center;
+      color: ${({ theme }) => theme.colors.orange}
+    }
+  }
 `
 
 export const Input = styled.input`

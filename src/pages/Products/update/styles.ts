@@ -11,4 +11,8 @@ export const UpdateProductContainer = styled.main`
     font-size: 1.5rem;
     color: ${({ theme }) => theme.colors.primary};
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 1.5rem;
+  }
 `

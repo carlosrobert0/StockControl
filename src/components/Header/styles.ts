@@ -47,6 +47,56 @@ export const HeaderContainer = styled.header`
       }
     }
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 0rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    gap: 6.5rem;
+
+    nav {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+
+      gap: 0.5rem;
+
+      hr {
+        margin: 0;
+        width: 20px;
+        transform: rotate(0deg);
+      }
+
+      a {
+        width: auto;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        gap: 0.5rem;
+
+        color: ${({ theme }) => theme.colors.gray};
+
+        border-top: 3px solid transparent;
+        border-bottom: 3px solid transparent;
+
+        transition: all 0.2s;
+
+        text-decoration: none;
+
+        &:hover {
+          border-bottom: 3px solid ${({ theme }) => theme.colors.primary};
+        }
+
+        &.active {
+          color: ${({ theme }) => theme.colors.primary};
+        }
+      }
+    }
+  }
 `
 
 export const WrapperLogo = styled.div`

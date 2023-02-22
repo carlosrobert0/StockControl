@@ -10,8 +10,8 @@ import { CreateProductContainer } from "./styles";
 
 const newProductFormValidationSchema = zod.object({
   name: zod.string().min(1, 'Este campo é obrigatório.'),
-  price: zod.number().min(0, 'Este campo é obrigatório.'),
-  quantity: zod.number().min(0, 'Este campo é obrigatório.'),
+  price: zod.number().min(1, 'O preço deve ser maior que 0.'),
+  quantity: zod.number().min(1, 'A quantidade deve ser maior que 0.'),
   category: zod.string().min(1, 'Este campo é obrigatório.'),
   description: zod.string().min(1, 'Este campo é obrigatório.'),
 })
@@ -35,6 +35,12 @@ export function CreateProduct() {
   })
 
   function handleCreateNewProduct(data: NewProductFormData) {
+    const existsProducts =  products.find((product: any) => product.name.toUpperCase() === data.name.toUpperCase())
+
+    if (existsProducts) {
+      return alert('Já existe um produto com este nome')
+    }
+    
     dispatch(addProduct(data))
     reset()
 

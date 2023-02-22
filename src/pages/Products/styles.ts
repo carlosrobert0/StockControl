@@ -25,6 +25,31 @@ export const ProductsContainer = styled.main`
       gap: 2.5rem;
     }
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 0.5rem;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+
+      h1 {
+        font-size: 1.5rem;
+        color: ${({ theme }) => theme.colors.primary};
+      }
+
+      div {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        gap: 0.5rem;
+      }
+    }
+  }
 `
 
 export const ProductsList = styled.div`

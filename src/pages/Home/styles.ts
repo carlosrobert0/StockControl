@@ -10,8 +10,11 @@ export const HomeContainer = styled.main`
 
   div {
     display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    gap: 2.5rem;
 
     h1 {
       font-size: 1.5rem;

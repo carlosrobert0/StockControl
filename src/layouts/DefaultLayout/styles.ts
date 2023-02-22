@@ -11,4 +11,8 @@ export const LayoutContainer = styled.div`
   
   display: flex;
   flex-direction: column;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    flex: 1;
+  }
 `
