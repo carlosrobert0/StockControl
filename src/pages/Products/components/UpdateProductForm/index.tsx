@@ -1,9 +1,7 @@
-import { useContext, useEffect } from "react";
 import { useFormContext } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
-import { Router, useNavigate, useParams } from "react-router-dom";
-import { ProductsContext } from "../../../../contexts/ProductsContext";
-import { selectProduct, updateProduct } from "../../../../redux/productSlice";
+import { useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { selectProducts } from "../../../../redux/productSlice";
 import { NewProductFormData } from "../../create";
 import { OverlayTooltip } from "../OverlayTooltip";
 
@@ -20,15 +18,17 @@ export function UpdateProductForm() {
   const router = useParams()
   const navigate = useNavigate()
   const { id } = router
-  const { products } = useContext(ProductsContext) 
+  const products = useSelector(selectProducts)
   
   function navigateToBack() {
     navigate("/products")
   }
 
-  let product = products.find(product => product.id === id)
+  let product = products.find((product: any) => product.id === id)
+
   return (
     <FormContainer>
+      <p>Atenção: Você só pode alterar os campos vazios</p>
       <div>
         <label htmlFor="name">Nome:</label>
         <div>
@@ -36,7 +36,7 @@ export function UpdateProductForm() {
             id="name"
             {...register("name")}
             type="text"
-            // value={product?.name}
+            value={product?.name}
             onChange={(e: any) => setValue("name", e.target.value)}
             placeholder="Nome"
           />
@@ -48,11 +48,23 @@ export function UpdateProductForm() {
         <div>
           <Input
             id="price"
-            {...register("price")}
-            type="text"
-            // value={product?.price}
+            {...register("price", { valueAsNumber: true })}
+            type="number"
             onChange={(e: any) => setValue("price", e.target.value)}
             placeholder="Preço"
+          />
+          {errors.price && <OverlayTooltip message={errors.price.message} />}
+        </div>
+      </div>
+      <div>
+        <label htmlFor="quantity">Quant.:</label>
+        <div>
+          <Input
+            id="quantity"
+            {...register("quantity", { valueAsNumber: true })}
+            type="number"
+            onChange={(e: any) => setValue("quantity", e.target.value)}
+            placeholder="Quantidade"
           />
           {errors.price && <OverlayTooltip message={errors.price.message} />}
         </div>
@@ -63,9 +75,9 @@ export function UpdateProductForm() {
           <Input
             id="category"
             {...register("category")}
-            // value={product?.category}
-            type="text"
+            value={product?.category}
             onChange={(e: any) => setValue("category", e.target.value)}
+            type="text"
             placeholder="Categoria"
           />
           {errors.category && <OverlayTooltip message={errors.category.message} />}
@@ -78,7 +90,7 @@ export function UpdateProductForm() {
             id="description"
             {...register("description")}
             type="text"
-            // value={product?.description}
+            value={product?.description}
             onChange={(e: any) => setValue("description", e.target.value)}
             placeholder="Descrição"
           />

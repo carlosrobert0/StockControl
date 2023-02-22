@@ -1,8 +1,8 @@
 import { HeaderContainer, WrapperLogo } from "./styles";
 
-import logoStock from '../../assets/stockIcon.svg'
-import { NavLink } from "react-router-dom";
 import { Gauge, Table } from "phosphor-react";
+import { NavLink } from "react-router-dom";
+import logoStock from '../../assets/stockIcon.svg';
 
 export function Header() {
   return (

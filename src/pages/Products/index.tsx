@@ -1,11 +1,10 @@
 import { Pencil, Plus, Trash } from "phosphor-react";
-import { useContext, useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useTheme } from "styled-components";
 import { deleteProduct, selectProducts } from "../../redux/productSlice";
 import ModalDialogConfirm from "./components/DialogModal";
-import { Input } from "./components/NewProductForm/styles";
 import { InputSearch, ProductsContainer, ProductsList, WrapperCheckbox } from "./styles";
 
 export function Products() {
@@ -41,7 +40,7 @@ export function Products() {
       : []
   } else if (checkedPrice) {
     filteredProducts = search.length > 0
-      ? products.filter((product: any) => product.price.toUpperCase().includes(search.toUpperCase()))
+      ? products.filter((product: any) => product.price.toString().includes(search))
       : []
   } else {
     filteredProducts = search.length > 0
@@ -109,6 +108,7 @@ export function Products() {
             <tr>
               <th>Nome</th>
               <th>Preço</th>
+              <th>Quantidade</th>
               <th>Categoria</th>
               <th>Descrição</th>
               <th>Ação</th>
@@ -120,7 +120,8 @@ export function Products() {
                 filteredProducts?.map((product: any) => (
                   <tr key={product.id}>
                     <td>{product.name}</td>
-                    <td>{product.price}</td>
+                    <td>R$ {product.price}</td>
+                    <td>{product.quantity}</td>
                     <td>{product.category}</td>
                     <td>{product.description}</td>
                     <td>
@@ -142,7 +143,8 @@ export function Products() {
                 products?.map((product: any) => (
                   <tr key={product.id}>
                     <td>{product.name}</td>
-                    <td>{product.price}</td>
+                    <td>R$ {product.price}</td>
+                    <td>{product.quantity}</td>
                     <td>{product.category}</td>
                     <td>{product.description}</td>
                     <td>

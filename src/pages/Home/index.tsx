@@ -1,11 +1,10 @@
-import { useContext } from "react";
-import { NavLink } from "react-router-dom";
-import { ProductsContext } from "../../contexts/ProductsContext";
+import { useSelector } from "react-redux";
+import { selectProducts } from "../../redux/productSlice";
 import { CardDashboard } from "./components/CardDashboard";
 import { HomeContainer } from "./styles";
 
 export function Home() {
-  const { products } = useContext(ProductsContext)
+  const products = useSelector(selectProducts)
 
   let totalProducts = products.length
   

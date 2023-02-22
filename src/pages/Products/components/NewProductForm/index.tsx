@@ -1,6 +1,5 @@
-import { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
-import { Router, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { NewProductFormData } from "../../create";
 import { OverlayTooltip } from "../OverlayTooltip";
 
@@ -40,11 +39,23 @@ export function NewProductForm() {
         <div>
           <Input
             id="price"
-            {...register("price")}
-            type="text"
+            {...register("price", { valueAsNumber: true })}
+            type="number"
             placeholder="Preço"
           />
           {errors.price && <OverlayTooltip message={errors.price.message} />}
+        </div>
+      </div>
+      <div>
+        <label htmlFor="quantity">Quant.:</label>
+        <div>
+          <Input
+            id="quantity"
+            {...register("quantity", { valueAsNumber: true })}
+            type="number"
+            placeholder="Quantidade"
+          />
+          {errors.quantity && <OverlayTooltip message={errors.quantity.message} />}
         </div>
       </div>
       <div>

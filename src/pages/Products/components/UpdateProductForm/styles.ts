@@ -9,12 +9,18 @@ export const FormContainer = styled.div`
 
   border-radius: 8px;
 
-  align-items: flex-start;
+  align-items: center;
   gap: 0.5rem;
   color: ${({ theme }) => theme.colors.gray_dark};
   background-color: ${({ theme }) => theme.colors.white};
   font-size: 1.125rem;
   font-weight: regular;
+
+  p {
+    font-size: 12px;
+    text-align: center;
+    color: ${({ theme }) => theme.colors.orange}
+  }
 
   div {
     width: 100%;
