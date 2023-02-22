@@ -16,6 +16,14 @@ export const ProductsContainer = styled.main`
       font-size: 1.5rem;
       color: ${({ theme }) => theme.colors.primary};
     }
+
+    div {
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+
+      gap: 2.5rem;
+    }
   }
 `
 
@@ -85,4 +93,28 @@ export const ProductsList = styled.div`
       }
     }
   }
+`
+
+export const InputSearch = styled.input`
+  position: relative;
+  width: 19rem;
+  height: 2.5rem;
+  border: 2px solid ${({ theme }) => theme.colors.gray};
+  font-weight: regular;
+  font-size: 1.125rem;
+  padding: 0 0.5rem;
+  color: ${({ theme }) => theme.colors.gray_dark};
+  border-radius: 5px;
+  
+  &:focus {
+    box-shadow: none;
+  }
+
+  &::placeholder {
+    color: ${({ theme }) => theme.colors.gray};
+    opacity: 0.5;
+  }
+`
+
+export const WrapperCheckbox = styled.div`
 `
