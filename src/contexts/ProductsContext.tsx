@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 
 export const ProductsContext = createContext({} as ProductsContextType)
 
@@ -63,7 +63,7 @@ export function ProductsContextProvider({ children }: ProductsContextProviderPro
       return updatedProducts;
     });
   }
-
+  
   return (
     <ProductsContext.Provider
       value={{

@@ -1,20 +1,23 @@
 import { Pencil, Plus, Trash } from "phosphor-react";
 import { useContext, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useTheme } from "styled-components";
 import { ProductsContext } from "../../contexts/ProductsContext";
+import { deleteProduct, selectProducts } from "../../redux/productSlice";
 import ModalDialogConfirm from "./components/DialogModal";
 import { ProductsContainer, ProductsList } from "./styles";
 
 export function Products() {
   const theme = useTheme()
   const [showModal, setShowModal] = useState(false);
-  const { products, deleteProduct } = useContext(ProductsContext)
+  const products = useSelector(selectProducts)
   const [productIdSelected, setProductIdSelected] = useState<any>()
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   function handleConfirm(productId: string) {
-    deleteProduct(productId)
+    dispatch(deleteProduct(productId));
     setShowModal(false);
   };
 
@@ -31,7 +34,6 @@ export function Products() {
         </NavLink>
       </div>
 
-
       <ProductsList>
         <table>
           <thead>
@@ -44,7 +46,7 @@ export function Products() {
             </tr>
           </thead>
           <tbody>
-            {products?.map(product => (
+            {products?.map((product: any) => (
               <tr key={product.id}>
                 <td>{product.name}</td>
                 <td>{product.price}</td>

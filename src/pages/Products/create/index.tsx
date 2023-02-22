@@ -7,6 +7,8 @@ import { CreateProductContainer } from "./styles";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ProductsContext } from "../../../contexts/ProductsContext";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../../../redux/productSlice";
 
 const newProductFormValidationSchema = zod.object({
   name: zod.string().min(1, 'Este campo é obrigatório.'),
@@ -20,7 +22,8 @@ export type NewProductFormData = zod.infer<typeof newProductFormValidationSchema
 export function CreateProduct() {
   const navigate = useNavigate()
   const { createNewProduct } = useContext(ProductsContext)
-  
+  const dispatch = useDispatch()
+
   const newProductForm = useForm<NewProductFormData>({
     resolver: zodResolver(newProductFormValidationSchema),
     defaultValues: {
@@ -32,7 +35,8 @@ export function CreateProduct() {
   })
 
   function handleCreateNewProduct(data: NewProductFormData) {
-    createNewProduct(data)
+    // createNewProduct(data)
+    dispatch(addProduct(data))
     reset()
 
     navigate('/products')
