@@ -6,9 +6,9 @@ import { HomeContainer } from "./styles";
 export function Home() {
   const products = useSelector(selectProducts)
 
-  let totalProducts = products.length
+  let totalProducts = products?.length
 
-  const productSmallerQuantity = products.reduce((productSmaller: any, productCurrent: any) => {
+  const productSmallerQuantity = products?.reduce((productSmaller: any, productCurrent: any) => {
     if (productCurrent.quantity < productSmaller.quantity) {
       return productCurrent;
     } else {
@@ -16,7 +16,7 @@ export function Home() {
     }
   });
 
-  const productGreaterQuantity = products.reduce((productGreater: any, productCurrent: any) => {
+  const productGreaterQuantity = products?.reduce((productGreater: any, productCurrent: any) => {
     if (productCurrent.quantity > productGreater.quantity) {
       return productCurrent;
     } else {

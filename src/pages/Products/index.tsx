@@ -32,19 +32,19 @@ export function Products() {
 
   if (checkedName) {
     filteredProducts = search.length > 0
-      ? products.filter((product: any) => product.name.toUpperCase().includes(search.toUpperCase()))
+      ? products?.filter((product: any) => product.name.toUpperCase().includes(search.toUpperCase()))
       : []
   } else if (checkedCategory) {
     filteredProducts = search.length > 0
-      ? products.filter((product: any) => product.category.toUpperCase().includes(search.toUpperCase()))
+      ? products?.filter((product: any) => product.category.toUpperCase().includes(search.toUpperCase()))
       : []
   } else if (checkedPrice) {
     filteredProducts = search.length > 0
-      ? products.filter((product: any) => product.price.toString().includes(search))
+      ? products?.filter((product: any) => product.price.toString().includes(search))
       : []
   } else {
     filteredProducts = search.length > 0
-      ? products.filter((product: any) => product.name.toUpperCase().includes(search.toUpperCase()))
+      ? products?.filter((product: any) => product.name.toUpperCase().includes(search.toUpperCase()))
       : []
   }
 
@@ -118,46 +118,46 @@ export function Products() {
             {
               search.length > 0 ?
                 filteredProducts?.map((product: any) => (
-                  <tr key={product.id}>
-                    <td>{product.name}</td>
-                    <td>R$ {product.price}</td>
-                    <td>{product.quantity}</td>
-                    <td>{product.category}</td>
-                    <td>{product.description}</td>
+                  <tr key={product?.id}>
+                    <td>{product?.name}</td>
+                    <td>R$ {product?.price}</td>
+                    <td>{product?.quantity}</td>
+                    <td>{product?.category}</td>
+                    <td>{product?.description}</td>
                     <td>
                       <div>
                         <Pencil
                           size={20}
                           weight="thin"
-                          onClick={() => navigate(`/products/update/${product.id}`)}
+                          onClick={() => navigate(`/products/update/${product?.id}`)}
                         />
                         <Trash
                           size={20}
                           weight="thin"
-                          onClick={() => { setShowModal(true); setProductIdSelected(product.id) }}
+                          onClick={() => { setShowModal(true); setProductIdSelected(product?.id) }}
                         />
                       </div>
                     </td>
                   </tr>
                 )) :
                 products?.map((product: any) => (
-                  <tr key={product.id}>
-                    <td>{product.name}</td>
-                    <td>R$ {product.price}</td>
-                    <td>{product.quantity}</td>
-                    <td>{product.category}</td>
-                    <td>{product.description}</td>
+                  <tr key={product?.id}>
+                    <td>{product?.name}</td>
+                    <td>R$ {product?.price}</td>
+                    <td>{product?.quantity}</td>
+                    <td>{product?.category}</td>
+                    <td>{product?.description}</td>
                     <td>
                       <div>
                         <Pencil
                           size={20}
                           weight="thin"
-                          onClick={() => navigate(`/products/update/${product.id}`)}
+                          onClick={() => navigate(`/products/update/${product?.id}`)}
                         />
                         <Trash
                           size={20}
                           weight="thin"
-                          onClick={() => { setShowModal(true); setProductIdSelected(product.id) }}
+                          onClick={() => { setShowModal(true); setProductIdSelected(product?.id) }}
                         />
                       </div>
                     </td>
