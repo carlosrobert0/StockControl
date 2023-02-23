@@ -1,8 +1,5 @@
 {
   "rewrites":  [
     {"source": "/(.*)", "destination": "/"}
-  ],
-  "build": {
-    "src": "main.tsx"
-  }
+  ]
 }
