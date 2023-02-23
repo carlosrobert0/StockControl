@@ -10,9 +10,12 @@ export const HomeContainer = styled.main`
 
   div {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    
+    div {
+      flex-direction: column;
+    }
 
     gap: 2.5rem;
 
@@ -20,5 +23,25 @@ export const HomeContainer = styled.main`
       font-size: 1.5rem;
       color: ${({ theme }) => theme.colors.primary};
     }
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    div {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+    
+    div {
+      flex-direction: column;
+    }
+
+    gap: 2.5rem;
+
+    h1 {
+      font-size: 1.5rem;
+      color: ${({ theme }) => theme.colors.primary};
+    }
+  }
   }
 `
